@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuItem from '../menu-item/menu-item.component';
+import DIRECTORY_DATA from '../../data/directory.data.jsx';
 import './directory.style.scss';
 
 class Directory extends React.Component {
@@ -7,40 +8,7 @@ class Directory extends React.Component {
     super();
 
     this.state = {
-      sections: [
-        {
-          id: 1,
-          name: 'hats',
-          imageUrl: 'https://tinyurl.com/ycvl3mdq',
-          link: 'hats'
-        },
-        {
-          id: 2,
-          name: 'clothes',
-          imageUrl: 'https://tinyurl.com/yaolm9td',
-          link: ''
-        },
-        {
-          id: 3,
-          name: 'shoes',
-          imageUrl: 'https://tinyurl.com/ya7oosq9',
-          link: ''
-        },
-        {
-          id: 4,
-          name: 'mens',
-          size: 'large',
-          imageUrl: 'https://tinyurl.com/y8cbwnjn',
-          link: ''
-        },
-        {
-          id: 5,
-          name: 'womens',
-          size: 'large',
-          imageUrl: 'https://tinyurl.com/y8hw6sar',
-          link: ''
-        }
-      ]
+      sections: DIRECTORY_DATA
     };
   }
   render() {

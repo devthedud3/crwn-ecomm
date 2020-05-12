@@ -1,5 +1,6 @@
 import React from 'react';
 import './preview-item.style.scss';
+import ButtonInput from '../button/button.component';
 
 const PreviewItem = ({ id, name, imageUrl, price }) => (
   <div className="preview-item">
@@ -9,6 +10,7 @@ const PreviewItem = ({ id, name, imageUrl, price }) => (
         backgroundImage: `url(${imageUrl})`
       }}
     />
+
     <div className="footer">
       <span className="name">{name}</span>
       <span className="price">${price}</span>

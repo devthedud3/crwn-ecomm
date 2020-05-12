@@ -1,0 +1,33 @@
+$main: #4c8bf5;
+$sub: white;
+
+.signin {
+  width: 35vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .title {
+      padding-top: 40px;
+      margin: -20px 0;
+    }
+
+    #googauth {
+      background-color: $sub;
+      color: $main;
+      border: 2px solid #4c8bf5;
+      width: 50%;
+
+      &:hover {
+        background-color: $main;
+        color: $sub;
+        border: 2px solid #4c8bf5;
+      }
+    }
+  }
+}

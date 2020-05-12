@@ -1,0 +1,23 @@
+$main: black;
+$invert: white;
+
+.button {
+  font-family: 'Open Sans Condensed';
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: lighter;
+  height: 60px;
+  width: 35%;
+  padding: 10px 7.5px;
+  transition: 0.2s ease-out;
+  background-color: $invert;
+  border: 2px solid $main;
+  color: $main;
+
+  &:hover {
+    color: $invert;
+    background-color: $main;
+    border: 2px solid $invert;
+  }
+}

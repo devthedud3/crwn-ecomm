@@ -1,6 +1,5 @@
 import React from 'react';
 import './preview-item.style.scss';
-import ButtonInput from '../button/button.component';
 
 const PreviewItem = ({ id, name, imageUrl, price }) => (
   <div className="preview-item">

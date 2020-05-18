@@ -12,8 +12,8 @@
     cursor: pointer;
 
     & .background-image {
-      transform: scale((1.1));
       transition: 0.7s ease-out;
+      transform: scale((1.1));
     }
 
     & .content {

@@ -21,38 +21,42 @@ class SignIn extends React.Component {
 
   handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value.trim() });
   };
 
   render() {
     return (
       <div className="signin">
-        <h2 className="title"> I already have an account </h2>
-        <h4 className="subtitle"> Log in with your email and password. </h4>
-
+        <div className="headline">
+          <h1 className="title"> I already have an account </h1>
+          <span className="subtitle">
+            {' '}
+            Log in with your email and password.{' '}
+          </span>
+        </div>
         <form onSubmit={this.handleClick}>
           <FormInput
             type="email"
             name="email"
             handleChange={this.handleChange}
             value={this.state.email}
-            label="email"
+            label="E-mail"
             required
           />
 
           <FormInput
             type="password"
             name="password"
-            label="password"
+            label="Password"
             value={this.state.password}
             handleChange={this.handleChange}
             required
           />
           <div className="button-container">
-            <ButtonInput type="Submit" onClick={e => console.log(e)}>
+            <ButtonInput type="Submit" onClick={this.handleClick}>
               SUBMIT
             </ButtonInput>
-            <ButtonInput id="googauth" onClick={SignInWithGoogle}>
+            <ButtonInput isGoogleSignIn onClick={SignInWithGoogle}>
               SIGN IN WITH GOOGLE
             </ButtonInput>
           </div>

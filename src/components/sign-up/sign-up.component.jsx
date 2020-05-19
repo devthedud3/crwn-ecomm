@@ -43,9 +43,9 @@ class SignUp extends React.Component {
     });
   };
 
-  handleChange = e => {
+  handleChange = async e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value.trim() });
   };
 
   render() {
@@ -61,34 +61,34 @@ class SignUp extends React.Component {
         <form onClick={this.handleClick}>
           <FormInput
             type="text"
-            handleChange={this.handleChange}
             name="displayName"
             label="Display Name"
+            handleChange={this.handleChange}
             value={this.state.displayName}
             required
           />
           <FormInput
             type="email"
-            handleChange={this.handleChange}
             name="email"
             label="E-mail"
+            handleChange={this.handleChange}
             value={this.state.email}
             required
           />
           <FormInput
             type="password"
-            handleChange={this.handleChange}
             name="password"
             label="Password"
+            handleChange={this.handleChange}
             value={this.state.password}
             required
           />
 
           <FormInput
             type="password"
-            handleChange={this.handleChange}
             name="confirmPassword"
             label="Confirm Password"
+            handleChange={this.handleChange}
             value={this.state.confirmPassword}
             required
           />

@@ -15,13 +15,8 @@ const config = {
 
 export const createUser = async (user, ...additionalData) => {
   if (!user) return;
-  const userCount = await firestore
-    .collection('/users')
-    .get()
-    .then(c => c.size);
 
-  const usersRef = firestore.doc(`/users/nycdb-${userCount}`);
-
+  const usersRef = firestore.doc(`/users/12343214fd`);
   const snapShot = await usersRef.get();
 
   if (!snapShot.exists) {

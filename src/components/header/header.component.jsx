@@ -1,7 +1,6 @@
 import React from 'react';
 import './header.style.scss';
 import ShoppingCart from '../cart/cart.component';
-import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';

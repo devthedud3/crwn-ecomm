@@ -1,10 +1,13 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
+
+import HeaderDiv from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
 import Shop from './pages/shop/shop.component';
-import HeaderDiv from './components/header/header.component';
 import SignPage from './pages/signup-in/signup-in.component';
+
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { activeUser } from './redux/user/user.selector';
 import { auth, createUser } from './firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { setActiveUser } from './redux/user/user.action';
@@ -54,8 +57,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProp = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProp = state => ({
+  currentUser: activeUser(state)
 });
 
 const mapdispatchToProps = dispatch => ({

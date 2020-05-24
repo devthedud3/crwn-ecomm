@@ -92,7 +92,11 @@ class SignUp extends React.Component {
             value={this.state.confirmPassword}
             required
           />
-          <ButtonInput type="submit" onClick={this.handleClick}>
+          <ButtonInput
+            className="button"
+            type="submit"
+            onClick={this.handleClick}
+          >
             {' '}
             SIGN UP{' '}
           </ButtonInput>

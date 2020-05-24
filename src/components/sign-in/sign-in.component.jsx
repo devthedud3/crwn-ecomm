@@ -61,7 +61,7 @@ class SignIn extends React.Component {
             required
           />
           <div className="button-container">
-            <ButtonInput type="Submit" onClick={this.handleClick}>
+            <ButtonInput type="Submit" isSubmit onClick={this.handleClick}>
               SUBMIT
             </ButtonInput>
             <ButtonInput

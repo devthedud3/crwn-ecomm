@@ -28,7 +28,7 @@ const CheckoutItem = ({ cart, addToCart, subFromCart, removeFromCart }) => {
       <span className="price"> ${price} </span>
       <div className="remove" onClick={() => removeFromCart(cart)}>
         {' '}
-        &#10006;{' '}
+        &#10007;{' '}
       </div>
     </div>
   );

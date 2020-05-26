@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import './menu-item.style.scss';
+import './home-directory-item.style.scss';
 
-const MenuItem = ({ name, size, imageUrl, link, history, match }) => (
+const HomeDirectoryItem = ({ name, size, imageUrl, link, history, match }) => (
   <div
     className={`${size} menu-item`}
     onClick={() => history.push(`${match.path}${link}`)}
@@ -20,4 +20,4 @@ const MenuItem = ({ name, size, imageUrl, link, history, match }) => (
   </div>
 );
 
-export default withRouter(MenuItem);
+export default withRouter(HomeDirectoryItem);

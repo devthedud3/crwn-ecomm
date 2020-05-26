@@ -1,0 +1,15 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .title {
+    font-size: 36px;
+    margin: 0 50%;
+  }
+}

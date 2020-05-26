@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCart } from '../../redux/cart/cart.action';
-import './preview-item.style.scss';
-import ButtonInput from '../button/button.component';
+import { addToCart } from '../../../redux/cart/cart.action';
+import './shop-directory-item.style.scss';
+import ButtonInput from '../../button/button.component';
 
-const PreviewItem = ({ item, addToCart }) => {
+const ShopDirectoryItem = ({ item, addToCart }) => {
   const { name, imageUrl, price } = item;
   return (
     <div className="preview-item">
@@ -30,4 +30,4 @@ const mapToDispatchToProps = dispatch => ({
   addToCart: item => dispatch(addToCart(item))
 });
 
-export default connect(null, mapToDispatchToProps)(PreviewItem);
+export default connect(null, mapToDispatchToProps)(ShopDirectoryItem);

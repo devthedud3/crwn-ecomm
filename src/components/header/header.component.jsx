@@ -11,12 +11,14 @@ import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { ReactComponent as Logo } from '../../assets/original.svg';
+import { ReactComponent as Logotitle } from '../../assets/crwn_custom_logo.svg';
 
 const HeaderDiv = ({ currentUser, hidden }) => (
   <div className="header">
     <Link className="logo-container" to="/">
-      <Logo className="logo" />
+      <Logotitle className="logo" />
     </Link>
+
     <div className="options">
       <Link className="option" to="/shop">
         SHOP{' '}

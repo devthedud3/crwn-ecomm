@@ -37,7 +37,7 @@ const Checkout = ({ cart, cartTotal }) => (
         EXP: 01/2023 ~~ CVC: 123
       </span>
     </div>
-    <StripeCheckoutButton price={cartTotal} />
+    <StripeCheckoutButton price={cartTotal} cart={cart} />
   </div>
 );
 

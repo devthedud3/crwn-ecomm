@@ -2,12 +2,12 @@ import React from 'react';
 import SignIn from '../../components/sign-in/sign-in.component';
 import SignUp from '../../components/sign-up/sign-up.component';
 
-import './signup-in.style.scss';
+import { SignPageContainer } from './signup-in.style';
 
 const SignPage = () => (
-  <div className="page-container">
+  <SignPageContainer>
     <SignIn />
     <SignUp />
-  </div>
+  </SignPageContainer>
 );
 export default SignPage;

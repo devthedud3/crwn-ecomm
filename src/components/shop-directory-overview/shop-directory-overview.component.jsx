@@ -3,7 +3,7 @@ import './shop-directory-overview.style.scss';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectAllShopData } from '../../redux/shop/shop.selector';
+import { convertCollectionKeys } from '../../redux/shop/shop.selector';
 import ShopDirectory from '../shop-directory/shop-directory.component';
 
 const ShopDirectoryOverview = ({ shopDirectory }) => (
@@ -15,7 +15,7 @@ const ShopDirectoryOverview = ({ shopDirectory }) => (
 );
 
 const mapStateToProps = createStructuredSelector({
-  shopDirectory: selectAllShopData
+  shopDirectory: convertCollectionKeys
 });
 
 export default connect(mapStateToProps)(ShopDirectoryOverview);

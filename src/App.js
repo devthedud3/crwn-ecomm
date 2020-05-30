@@ -11,6 +11,7 @@ import { createStructuredSelector } from 'reselect';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { activeUser } from './redux/user/user.selector';
 import { auth, createUser } from './firebase/firebase.utils';
+
 import { connect } from 'react-redux';
 import { setActiveUser } from './redux/user/user.action';
 
@@ -64,8 +65,8 @@ const mapStateToProp = createStructuredSelector({
   currentUser: activeUser
 });
 
-const mapdispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   setActiveUser: user => dispatch(setActiveUser(user))
 });
 
-export default connect(mapStateToProp, mapdispatchToProps)(App);
+export default connect(mapStateToProp, mapDispatchToProps)(App);

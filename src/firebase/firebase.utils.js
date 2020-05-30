@@ -16,7 +16,7 @@ const config = {
 export const createUser = async (user, ...additionalData) => {
   if (!user) return;
 
-  const usersRef = firestore.doc(`/users/12343214fd`);
+  const usersRef = firestore.doc(`/users/${user.uid}`);
   const snapShot = await usersRef.get();
 
   if (!snapShot.exists) {
@@ -35,6 +35,34 @@ export const createUser = async (user, ...additionalData) => {
     }
   }
   return usersRef;
+};
+
+export const setCollectionData = obj => {
+  const transformedObj = obj.docs.map(doc => {
+    const { title, items } = doc.data();
+
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      title,
+      items,
+      id: doc.id
+    };
+  });
+  return transformedObj.reduce((arr, content) => {
+    arr[content.routeName] = content;
+    return arr;
+  }, {});
+};
+
+export const populateFirebaseStore = async (objKey, objToadd) => {
+  const collectionRef = firestore.collection(objKey);
+  const batch = firestore.batch();
+  objToadd.forEach(element => {
+    const newRef = collectionRef.doc();
+    batch.set(newRef, element);
+  });
+
+  return await batch.commit();
 };
 
 firebase.initializeApp(config);

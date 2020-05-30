@@ -10,7 +10,7 @@ const ActionType = {
   },
 
   shop: {
-    SHOW_HATS: 'SHOW_HATS'
+    DISPLAY_DATA: 'DISPLAY_DATA'
   }
 };
 

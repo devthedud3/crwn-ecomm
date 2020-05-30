@@ -1,14 +1,15 @@
-import SHOP_DATA from '../../data/shop.data';
+import ActionType from '../action.types';
+
 const INITIAL_STATE = {
-  shop: SHOP_DATA
+  collections: null
 };
 
 const shopReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'SHOW_HATS':
+    case ActionType.shop.DISPLAY_DATA:
       return {
         ...state,
-        action: action.payload
+        collections: action.payload
       };
 
     default:

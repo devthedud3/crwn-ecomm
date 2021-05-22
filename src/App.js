@@ -20,7 +20,6 @@ class App extends React.Component {
 
   componentDidMount() {
     const { setActiveUser } = this.props;
-
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async activeUser => {
       if (activeUser) {
         const userRef = await createUser(activeUser);
@@ -44,17 +43,11 @@ class App extends React.Component {
       <div>
         <HeaderDiv />
         <Switch>
+          <Route exact path="/sign" render={() => this.props.currentUser != null ? <Redirect to="/" /> : <SignPage />}></Route>
           <Route exact path="/" component={HomePage}></Route>
           <Route path="/shop" component={Shop}></Route>
-          <Route exact path="/header" component={Shop}></Route>
-          <Route
-            exact
-            path="/sign"
-            render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <SignPage />
-            }
-          ></Route>
           <Route exact path="/checkout" component={Checkout}></Route>
+          <Route exact path="/header" component={Shop}></Route>
         </Switch>
       </div>
     );

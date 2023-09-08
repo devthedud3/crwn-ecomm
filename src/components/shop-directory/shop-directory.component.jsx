@@ -1,7 +1,7 @@
-import React from 'react';
-import './shop-directory.style.scss';
-import ShopDirectoryItem from './shop-directory-item/shop-directory-item.component';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./shop-directory.style.scss";
+import ShopDirectoryItem from "./shop-directory-item/shop-directory-item.component";
+import { Link } from "react-router-dom";
 
 const ShopDirectory = ({ title, items }) => (
   <div className="product">
@@ -11,7 +11,7 @@ const ShopDirectory = ({ title, items }) => (
     <div className="collection">
       {items
         .filter((items, idx) => idx < 4)
-        .map(item => (
+        .map((item) => (
           <ShopDirectoryItem key={item.id} item={item} />
         ))}
     </div>

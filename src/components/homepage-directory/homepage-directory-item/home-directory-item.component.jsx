@@ -1,6 +1,7 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import './home-directory-item.style.scss';
+import React from "react";
+
+import "./home-directory-item.style.scss";
+import { withRouter } from "../../../helper-functions";
 
 const HomeDirectoryItem = ({ name, size, imageUrl, link, history, match }) => (
   <div

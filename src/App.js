@@ -1,65 +1,61 @@
-import React from 'react';
-import './App.css';
+import React, { useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-import HeaderDiv from './components/header/header.component';
-import SignPage from './pages/signup-in/signup-in.component';
-import HomePage from './pages/homepage/homepage.component';
-import Shop from './pages/shop/shop.component';
-import Checkout from './pages/checkout/checkout.component';
+import "./App.css";
+import HeaderDiv from "./components/header/header.component";
+import SignPage from "./pages/signup-in/signup-in.component";
+import HomePage from "./pages/homepage/homepage.component";
+import Shop from "./pages/shop/shop.component";
+import Checkout from "./pages/checkout/checkout.component";
 
-import { createStructuredSelector } from 'reselect';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { activeUser } from './redux/user/user.selector';
-import { auth, createUser } from './firebase/firebase.utils';
+import { activeUser } from "./redux/user/user.selector";
+import { auth, createUser } from "./firebase/firebase.utils";
+import { setActiveUser } from "./redux/user/user.action";
 
-import { connect } from 'react-redux';
-import { setActiveUser } from './redux/user/user.action';
+const App = () => {
+  const currentUser = useSelector(activeUser);
+  const dispatch = useDispatch();
+  let unsubscribeFromAuth = null;
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
-    const { setActiveUser } = this.props;
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async activeUser => {
-      if (activeUser) {
-        const userRef = await createUser(activeUser);
-        userRef.onSnapshot(snap => {
-          setActiveUser({
-            id: snap.id,
-            ...snap.data()
-          });
+  useEffect(() => {
+    const handleAuthChange = async (user) => {
+      if (user) {
+        const userRef = await createUser(user);
+        userRef.onSnapshot((snap) => {
+          dispatch(
+            setActiveUser({
+              id: snap.id,
+              ...snap.data()
+            })
+          );
         });
       }
-      setActiveUser(activeUser);
-    });
-  }
+      dispatch(setActiveUser(user));
+    };
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
+    unsubscribeFromAuth = auth.onAuthStateChanged(handleAuthChange);
 
-  render() {
-    return (
-      <div>
-        <HeaderDiv />
-        <Switch>
-          <Route exact path="/sign" render={() => this.props.currentUser != null ? <Redirect to="/" /> : <SignPage />}></Route>
-          <Route exact path="/" component={HomePage}></Route>
-          <Route path="/shop" component={Shop}></Route>
-          <Route exact path="/checkout" component={Checkout}></Route>
-          <Route exact path="/header" component={Shop}></Route>
-        </Switch>
-      </div>
-    );
-  }
-}
+    return () => {
+      unsubscribeFromAuth();
+    };
+  }, [dispatch]);
 
-const mapStateToProp = createStructuredSelector({
-  currentUser: activeUser
-});
+  return (
+    <div>
+      <HeaderDiv />
+      <Routes>
+        <Route
+          path="/sign"
+          element={currentUser != null ? <Navigate to="/" /> : <SignPage />}
+        />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/header" element={<Shop />} />
+      </Routes>
+    </div>
+  );
+};
 
-const mapDispatchToProps = dispatch => ({
-  setActiveUser: user => dispatch(setActiveUser(user))
-});
-
-export default connect(mapStateToProp, mapDispatchToProps)(App);
+export default App;

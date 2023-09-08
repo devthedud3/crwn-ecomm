@@ -1,16 +1,16 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import "firebase/compat/auth";
 
 const config = {
-  apiKey: 'AIzaSyAx_buU_bmneQqOokHnmaHdtW9j9hNd3Nw',
-  authDomain: 'crwn-db-505ba.firebaseapp.com',
-  databaseURL: 'https://crwn-db-505ba.firebaseio.com',
-  projectId: 'crwn-db-505ba',
-  storageBucket: 'crwn-db-505ba.appspot.com',
-  messagingSenderId: '100034403352',
-  appId: '1:100034403352:web:5f2daaa1b7f96d863f376d',
-  measurementId: 'G-D1S8DP703E'
+  apiKey: "AIzaSyAx_buU_bmneQqOokHnmaHdtW9j9hNd3Nw",
+  authDomain: "crwn-db-505ba.firebaseapp.com",
+  databaseURL: "https://crwn-db-505ba.firebaseio.com",
+  projectId: "crwn-db-505ba",
+  storageBucket: "crwn-db-505ba.appspot.com",
+  messagingSenderId: "100034403352",
+  appId: "1:100034403352:web:5f2daaa1b7f96d863f376d",
+  measurementId: "G-D1S8DP703E"
 };
 
 export const createUser = async (user, ...additionalData) => {
@@ -37,8 +37,8 @@ export const createUser = async (user, ...additionalData) => {
   return usersRef;
 };
 
-export const setCollectionData = obj => {
-  const transformedObj = obj.docs.map(doc => {
+export const setCollectionData = (obj) => {
+  const transformedObj = obj.docs.map((doc) => {
     const { title, items } = doc.data();
 
     return {
@@ -57,7 +57,7 @@ export const setCollectionData = obj => {
 export const populateFirebaseStore = async (objKey, objToadd) => {
   const collectionRef = firestore.collection(objKey);
   const batch = firestore.batch();
-  objToadd.forEach(element => {
+  objToadd.forEach((element) => {
     const newRef = collectionRef.doc();
     batch.set(newRef, element);
   });
@@ -71,7 +71,7 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
+provider.setCustomParameters({ prompt: "select_account" });
 
 export const SignInWithGoogle = () => auth.signInWithPopup(provider);
 export default firebase;

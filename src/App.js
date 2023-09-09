@@ -49,8 +49,11 @@ const App = () => {
           path="/sign"
           element={currentUser != null ? <Navigate to="/" /> : <SignPage />}
         />
+
         <Route path="/" element={<HomePage />} />
-        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/*" element={<Shop />}>
+          <Route path=":categoryId" element={<Checkout />} />
+        </Route>
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/header" element={<Shop />} />
       </Routes>

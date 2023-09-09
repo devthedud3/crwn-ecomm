@@ -1,33 +1,33 @@
-import React from 'react';
-import './sign-in.style.scss';
-import FormInput from '../form/form-input.component';
-import ButtonInput from '../button/button.component';
-import { auth, SignInWithGoogle } from '../../firebase/firebase.utils.js';
+import React from "react";
+import "./sign-in.style.scss";
+import FormInput from "../form/form-input.component";
+import ButtonInput from "../button/button.component";
+import { auth, SignInWithGoogle } from "../../firebase/firebase.utils.js";
 
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     };
   }
 
-  handleClick = async e => {
+  handleClick = async (e) => {
     e.preventDefault();
 
     const { email, password } = this.state;
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      this.setState({ email: '', password: '' });
+      this.setState({ email: "", password: "" });
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  handleChange = async e => {
+  handleChange = async (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value.trim() });
   };
@@ -38,8 +38,8 @@ class SignIn extends React.Component {
         <div className="headline">
           <h1 className="title"> I already have an account </h1>
           <span className="subtitle">
-            {' '}
-            Log in with your email and password.{' '}
+            {" "}
+            Log in with your email and password.{" "}
           </span>
         </div>
         <form onSubmit={this.handleClick}>

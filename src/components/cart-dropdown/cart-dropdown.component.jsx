@@ -3,37 +3,35 @@ import "./cart-dropdown.style.scss";
 
 import CartItem from "../cart-item/cart-item.component";
 import ButtonInput from "../button/button.component";
-
-import { createStructuredSelector } from "reselect";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCartItem } from "../../redux/cart/cart.selector";
 import { cartHidden } from "../../redux/cart/cart.action";
-import { withRouter } from "../../helper-functions";
+import { useNavigate } from "react-router-dom";
 
-const CartDropDown = ({ cartItems, history, dispatch }) => (
-  <div className="cart-dropdown">
-    <div className="cart-item">
-      {cartItems.length ? (
-        cartItems.map((item) => <CartItem key={item.id} {...item} />)
-      ) : (
-        <span className="empty-cart"> YOUR CART IS EMPTY</span>
-      )}
+const CartDropDown = () => {
+  const cartItems = useSelector(selectCartItem);
+  const dispatch = useDispatch();
+  const navigation = useNavigate();
+
+  const handleCheckout = () => {
+    navigation("/checkout");
+    dispatch(cartHidden());
+  };
+
+  return (
+    <div className="cart-dropdown">
+      <div className="cart-item">
+        {cartItems.length ? (
+          cartItems.map((item) => <CartItem key={item.id} {...item} />)
+        ) : (
+          <span className="empty-cart">YOUR CART IS EMPTY</span>
+        )}
+      </div>
+      <ButtonInput onClick={handleCheckout} className="button">
+        PROCEED TO CHECKOUT
+      </ButtonInput>
     </div>
-    <ButtonInput
-      onClick={() => {
-        history.push("/checkout");
-        dispatch(cartHidden());
-      }}
-      className="button"
-    >
-      {" "}
-      PROCEED TO CHECKOUT
-    </ButtonInput>
-  </div>
-);
+  );
+};
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItem
-});
-
-export default withRouter(connect(mapStateToProps)(CartDropDown));
+export default CartDropDown;

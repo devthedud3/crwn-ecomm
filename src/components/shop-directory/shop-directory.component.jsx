@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ShopDirectory = ({ title, items }) => (
   <div className="product">
-    <Link to={`shop/${title.toLowerCase()}`}>
+    <Link to={`${title.toLowerCase()}`}>
       <h1 className="title">{title}</h1>
     </Link>
     <div className="collection">

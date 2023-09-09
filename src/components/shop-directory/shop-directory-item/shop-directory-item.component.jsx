@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { addToCart } from '../../../redux/cart/cart.action';
-import './shop-directory-item.style.scss';
-import ButtonInput from '../../button/button.component';
+import React from "react";
+import { connect } from "react-redux";
+import { addToCart } from "../../../redux/cart/cart.action";
+import "./shop-directory-item.style.scss";
+import ButtonInput from "../../button/button.component";
 
 const ShopDirectoryItem = ({ item, addToCart }) => {
   const { name, imageUrl, price } = item;
@@ -13,21 +13,22 @@ const ShopDirectoryItem = ({ item, addToCart }) => {
         style={{
           backgroundImage: `url(${imageUrl})`
         }}
-      ></div>
+      >
+        <ButtonInput onClick={() => addToCart(item)} className="button">
+          {" "}
+          ADD TO CART{" "}
+        </ButtonInput>
+      </div>
       <div className="footer">
         <span className="name">{name}</span>
         <span className="price">${price}</span>
       </div>
-      <ButtonInput onClick={() => addToCart(item)} className="button">
-        {' '}
-        ADD TO CART{' '}
-      </ButtonInput>
     </div>
   );
 };
 
-const mapToDispatchToProps = dispatch => ({
-  addToCart: item => dispatch(addToCart(item))
+const mapToDispatchToProps = (dispatch) => ({
+  addToCart: (item) => dispatch(addToCart(item))
 });
 
 export default connect(null, mapToDispatchToProps)(ShopDirectoryItem);

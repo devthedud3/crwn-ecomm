@@ -1,10 +1,10 @@
-import React from 'react';
-import HomeDirectoryItem from './homepage-directory-item/home-directory-item.component';
-import './home-directory.style.scss';
+import React from "react";
+import HomeDirectoryItem from "./homepage-directory-item/home-directory-item.component";
+import "./home-directory.style.scss";
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { selectDirectory } from '../../redux/directory/directory.selector';
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectDirectory } from "../../redux/directory/directory.selector";
 
 const HomeDirectory = ({ directory }) => (
   <div className="directory">

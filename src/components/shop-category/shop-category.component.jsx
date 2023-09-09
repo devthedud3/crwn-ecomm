@@ -1,18 +1,26 @@
-import React from 'react';
-import './shop-category.style.scss';
+import React from "react";
+import "./shop-category.style.scss";
+import { useSelector } from "react-redux";
+import ShopDirectoryItem from "../shop-directory/shop-directory-item/shop-directory-item.component";
+import { selectShopCatergory } from "../../redux/shop/shop.selector";
 
-import { connect } from 'react-redux';
-import ShopDirectoryItem from '../shop-directory/shop-directory-item/shop-directory-item.component';
-import { selectShopCatergory } from '../../redux/shop/shop.selector';
+const ShopCategory = ({ match }) => {
+  const categoryId = match.params.categoryId;
+  const collections = useSelector(selectShopCatergory(categoryId));
 
-const ShopCatergory = ({ collections }) => {
+  console.log(match);
+  if (!collections) {
+    // Handle the case when the category is not found, e.g., show a loading spinner or an error message
+    return null;
+  }
+
   const { title, items } = collections;
 
   return (
     <div className="category">
       <h1 className="title">{title}</h1>
       <div className="items">
-        {items.map(item => (
+        {items.map((item) => (
           <ShopDirectoryItem key={item.id} item={item} />
         ))}
       </div>
@@ -20,7 +28,4 @@ const ShopCatergory = ({ collections }) => {
   );
 };
 
-const mapStateToProps = (state, otherProps) => ({
-  collections: selectShopCatergory(otherProps.match.params.categoryId)(state)
-});
-export default connect(mapStateToProps)(ShopCatergory);
+export default ShopCategory;

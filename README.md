@@ -6,27 +6,12 @@ CRWN Ecomm is a full-featured eCommerce web application built using React, JavaS
 
 ## Table of Contents
 
-- [Features](#features)
 - [Demo](#demo)
 - [Getting Started](#getting-started)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
 - [License](#license)
-
-## Features
-
-CRWN Ecomm comes with a variety of features that make it a complete and powerful eCommerce application:
-
-- **User Authentication**: Secure user registration and login functionality powered by Firebase Authentication.
-- **Product Catalog**: A user-friendly interface for browsing and searching products.
-- **Product Details**: Detailed product pages with images, descriptions, and pricing.
-- **Shopping Cart**: Add and manage items in the cart with real-time updates.
-- **Checkout Process**: Seamless checkout process with address and payment details.
-- **Order History**: View and track your order history.
-- **Admin Panel**: An admin panel to manage products and orders.
-- **Responsive Design**: Mobile-friendly and responsive design for a great user experience on all devices.
-- **Payment Processing**: Integration with payment gateways for secure transactions.
 
 ## Demo
 

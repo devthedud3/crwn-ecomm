@@ -30,7 +30,7 @@ CRWN Ecomm comes with a variety of features that make it a complete and powerful
 
 ## Demo
 
-You can experience the CRWN Ecomm web app live by visiting the [CRWN Ecomm Demo](https://your-demo-url.com).
+You can experience the CRWN Ecomm web app live by visiting the [CRWN Ecomm Demo](https://crwn-ecomm.vercel.app/).
 
 ## Getting Started
 
@@ -39,7 +39,7 @@ To run the CRWN Ecomm web app locally and explore the codebase, follow these ste
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/your-username/crwn-ecomm.git
+   git clone https://github.com/devthedud3/crwn-ecomm.git
    cd crwn-ecomm
    ```
 

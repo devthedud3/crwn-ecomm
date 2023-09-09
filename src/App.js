@@ -51,9 +51,7 @@ const App = () => {
         />
 
         <Route path="/" element={<HomePage />} />
-        <Route path="/shop/*" element={<Shop />}>
-          <Route path=":categoryId" element={<Checkout />} />
-        </Route>
+        <Route path="/shop/*" element={<Shop />}></Route>
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/header" element={<Shop />} />
       </Routes>

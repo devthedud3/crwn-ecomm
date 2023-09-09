@@ -4,15 +4,8 @@ import { useSelector } from "react-redux";
 import ShopDirectoryItem from "../shop-directory/shop-directory-item/shop-directory-item.component";
 import { selectShopCatergory } from "../../redux/shop/shop.selector";
 
-const ShopCategory = ({ match }) => {
-  const categoryId = match.params.categoryId;
+const ShopCategory = ({ categoryId }) => {
   const collections = useSelector(selectShopCatergory(categoryId));
-
-  console.log(match);
-  if (!collections) {
-    // Handle the case when the category is not found, e.g., show a loading spinner or an error message
-    return null;
-  }
 
   const { title, items } = collections;
 

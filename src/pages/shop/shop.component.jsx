@@ -12,8 +12,9 @@ const ShopCategoryWithSpinner = WithSpinner(ShopCategory);
 
 const Shop = () => {
   const { categoryId } = useParams();
+
+  console.log(categoryId);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,8 +41,13 @@ const Shop = () => {
           element={<ShopDirectoryOverviewWithSpinner isLoading={loading} />}
         />
         <Route
-          path={"/shop/:categoryId"}
-          element={<ShopCategoryWithSpinner isLoading={loading} />}
+          path={":categoryId"}
+          element={
+            <ShopCategoryWithSpinner
+              isLoading={loading}
+              categoryId={categoryId}
+            />
+          }
         />
       </Routes>
     </div>

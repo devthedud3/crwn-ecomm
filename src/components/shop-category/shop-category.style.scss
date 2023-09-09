@@ -1,11 +1,15 @@
 .category {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
 
   .items {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 50px;
+
+
+
   }
 
   .title {
